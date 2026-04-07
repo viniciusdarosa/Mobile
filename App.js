@@ -1,20 +1,32 @@
-
 import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
+import Entypo from '@expo/vector-icons/Entypo';
+
+import Pessoas from "./Screens/Pessoas";
 import Home from "./Screens/Home";
 import Login from "./Screens/Login";
-import Pessoas from "./Screens/Pessoas";
+
+function TabNavigate(){
+  const Tab = createBottomTabNavigator();
+  return(
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={Home}/>
+      <Tab.Screen name="Contato" component={Pessoas}/>
+    </Tab.Navigator>
+  );
+}
 
 export default function App(){
   const Stack = createStackNavigator();
+
   return(
     <NavigationContainer>
-      <Stack.Navigator> 
+      <Stack.Navigator screenOptions={{headerShown:false,}}>
         <Stack.Screen name="Login" component={Login}/>
-        <Stack.Screen name="Home Screen" component={Home}/>
-        <Stack.Screen name="Contato" component={Pessoas}/> 
+        <Stack.Screen name="Home" component={TabNavigate}/>
       </Stack.Navigator>
     </NavigationContainer>
-  )
-}
+  );
+  }

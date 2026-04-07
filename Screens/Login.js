@@ -8,7 +8,7 @@ export default function Login({navigation}) {
             <TextInput placeholder="Password" style={styles.txtInput} />
 
             <Button title="Login" 
-            onPress={() => navigation.navigate('Contato')}/>
+            onPress={() => navigation.navigate('Home')}/>
         </View>
     )
 };
